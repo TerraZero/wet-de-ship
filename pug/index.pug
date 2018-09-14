@@ -1,0 +1,19 @@
+extends _html
+
+block title
+  | Wet de SHIP
+
+block body
+  #mount
+    .page
+      .header
+        .title
+          | {{ title }}
+      .content
+        .fields.layout--flex(v-bind:style='battlefield.style()')
+          .field(v-for='field in battlefield.fields', v-bind:style='field.style()')
+            span {{ field.point.x + 1 }} - {{ field.point.y + 1 }}
+      .bottom
+        .actions
+          .action(v-for='type in types', v-on:click='type.click(this)')
+            | {{ type.name }}

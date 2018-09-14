@@ -1,0 +1,18 @@
+doctype html
+
+html
+  head
+    block head
+      title
+        block title
+    block css
+      link(rel='stylesheet', type='text/css' href='/css/style.css')
+  body
+    block body
+    block js
+      each src in libs
+        script(src=src)
+      each src in classes
+        script(src=src)
+      each src in scripts
+        script(src=src)
