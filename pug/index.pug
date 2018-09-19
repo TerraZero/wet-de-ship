@@ -7,13 +7,17 @@ block body
   #mount
     .page
       .header
-        .title
+        h1.title
           | {{ title }}
       .content
-        .fields.layout--flex(v-bind:style='battlefield.style()')
-          .field(v-for='field in battlefield.fields', v-bind:style='field.style()')
-            span {{ field.point.x + 1 }} - {{ field.point.y + 1 }}
+        .battlefield(v-on:mouseleave="cb(battlefield, 'mouseleave')")
+          .fields.hud-pointer(v-on:mousewheel.prevent="cb(hud, 'mousewheel')")
+            .field(v-for='field in battlefield.fields', v-bind:style='field.style()', v-on:mouseenter="cb(field, 'mouseenter')")
+              span {{ field.point.x + 1 }} - {{ field.point.y + 1 }}
+          .hud(v-if="hud.field")
+            .hud--field(v-for="index in action.type.length", v-if="cb(hud, 'isHudField', index)", v-bind:style="cb(hud, 'style', index)")
       .bottom
         .actions
-          .action(v-for='type in types', v-on:click='type.click(this)')
-            | {{ type.name }}
+          .action.hud-pointer(v-for='action in actions', v-on:click="cb(action, 'click')", v-bind:class="cb(action, 'classes')")
+            .action--line(v-for="title in action.title()")
+              | {{ title }}

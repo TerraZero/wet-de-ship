@@ -1,11 +1,8 @@
 class ShipType {
 
-  constructor(name) {
+  constructor(name, length) {
     this.name = name;
-  }
-
-  click() {
-
+    this.length = length;
   }
 
 }
@@ -13,7 +10,7 @@ class ShipType {
 class Schlachtschiff extends ShipType {
 
   constructor() {
-    super('Schlachtschiff');
+    super('Schlachtschiff', 5);
   }
 
 }
@@ -21,7 +18,15 @@ class Schlachtschiff extends ShipType {
 class Kreuzer extends ShipType {
 
   constructor() {
-    super('Kreuzer');
+    super('Kreuzer', 3);
+  }
+
+}
+
+class Transporter extends ShipType {
+
+  constructor() {
+    super('Transporter', 1);
   }
 
 }

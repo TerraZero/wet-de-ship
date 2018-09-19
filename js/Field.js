@@ -1,13 +1,20 @@
 class Field {
 
-  constructor(point) {
+  constructor(point, index) {
     this.point = point;
+    this.index = index;
   }
 
   style() {
     return {
-      width: (Game.width / Game.x) + 'px',
+      width: (100 / Game.x) + '%',
+      height: (100 / Game.y) + '%',
     };
+  }
+
+  mouseenter(data) {
+    if (data.action === null) return;
+    data.action.hudField(data, this);
   }
 
 }

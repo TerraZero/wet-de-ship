@@ -1,0 +1,21 @@
+.actions
+  width: 1024px
+  display: flex
+  flex-wrap: wrap
+
+.action
+  display: inline-flex
+  min-width: 20%
+  min-height: 50px
+  border: 2px solid black
+  justify-content: center
+  align-items: center
+  flex-wrap: wrap
+
+  &--active,
+  &:hover
+    background: grey
+
+  &--line
+    width: 100%
+    text-align: center
